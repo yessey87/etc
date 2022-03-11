@@ -1,2 +1,6 @@
+########### clone disk with DD & NC
+
 netcat -l -p 5000 | dd of=/dev/sda bs=4k
 dd if=/dev/vda bs=4k status=progress | nc {ip-address} 5000
+
+######################################
