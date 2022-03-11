@@ -17,4 +17,10 @@ dump -0 -L -f - /usr | gzip -2 > /mnt/usr.`date +%Y.%m.%d`.img.gz с зипом
 
 xfsdump -L root -M FullBackup -J  - / |gzip -2 > /mnt/root.'date+%Y.%m.%d'.img.gz
 
-################################
+################################ Proxmox subscription disable ############################
+
+чтобы отключить информационное окно о подписке, выполните данную команду:
+
+sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && systemctl restart pveproxy.service
+
+##############################################
