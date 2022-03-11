@@ -1,6 +1,20 @@
-########### clone disk with DD & NC
+################################### clone disk with DD & NC ########################################
 
 netcat -l -p 5000 | dd of=/dev/sda bs=4k
 dd if=/dev/vda bs=4k status=progress | nc {ip-address} 5000
 
-######################################
+###################################### DUMP COMMAND #######################
+
+/sbin/dump -0u -f - / | gzip -2 | ssh yessey@192.168.0.77 dd of=/media/yessey/root.dump.gz
+
+ssh yessey@192.168.0.77 gzip -dc /media/yessey/Work-Data/name.dump.gz | restore -r -f -
+
+xfsdump -l 0 -f /usr/src/040718.dump /
+
+dump -0 -L -f - /dev/ad0s1d > /mnt/oldvardev.`date +%Y.%m.%d`.img без зипа
+
+dump -0 -L -f - /usr | gzip -2 > /mnt/usr.`date +%Y.%m.%d`.img.gz с зипом
+
+xfsdump -L root -M FullBackup -J  - / |gzip -2 > /mnt/root.'date+%Y.%m.%d'.img.gz
+
+################################
