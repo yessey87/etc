@@ -1,0 +1,27 @@
+################################ Configuring Asterisk To Provide Ring-back #########################
+
+If you are having issues getting your Asterisk Server to provide Ring-back to your customers then there are some simple settings we need to configure. 
+
+If you are using Asterisk with NO GUI then all you have to edit is the sip.conf file usually found in /etc/asterisk/
+Once you are in the sip.conf please add these values to the general category:
+prematuremedia=no
+progressinband=yes
+
+Once this has been done make sure to save and restart your asterisk server. Usually its done by running this in your terminal: service asterisk restart
+Your PBX should now be providing ring-back to your end-customers. 
+
+
+If you are using a GUI like FreePBX then you will need to do two things.
+
+1. Under your PEER Details in trunk settings add these two values:
+prematuremedia=no
+progressinband=yes
+
+2. Next, edit file: sip_general_custom.conf usually found in /etc/asterisk/ and add these two values at the top:
+prematuremedia=no
+progressinband=yes
+
+Make sure to save your settings. Once saved - restart the Asterisk service.
+Your PBX should now be providing ring-back to your end-customers.
+
+#############################################################################################
