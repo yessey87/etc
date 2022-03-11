@@ -24,4 +24,10 @@ progressinband=yes
 Make sure to save your settings. Once saved - restart the Asterisk service.
 Your PBX should now be providing ring-back to your end-customers.
 
-#############################################################################################
+##################################################### ADD RUSSIAN PROMTS ASTERISK ###########################################
+
+mkdir -p /var/lib/asterisk/sounds/ru/ && wget -q --no-check-certificate https://github.com/pbxware/asterisk-sounds/tarball/master -O- \ |  tar xzv  --strip-components 1 -C /var/lib/asterisk/sounds/ru/
+
+wget -q --no-check-certificate https://github.com/pbxware/asterisk-sounds-additional/tarball/master -O- \ |  tar xzv  --strip-components 1 -C /var/lib/asterisk/sounds/ru/
+
+##############################################################
