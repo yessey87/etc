@@ -5,9 +5,9 @@ dd if=/dev/vda bs=4k status=progress | nc {ip-address} 5000
 
 ###################################### DUMP COMMAND #######################
 
-/sbin/dump -0u -f - / | gzip -2 | ssh yessey@192.168.0.77 dd of=/media/yessey/root.dump.gz
+/sbin/dump -0u -f - / | gzip -2 | ssh user@192.168.0.77 dd of=/media/yessey/root.dump.gz
 
-ssh yessey@192.168.0.77 gzip -dc /media/yessey/Work-Data/name.dump.gz | restore -r -f -
+ssh user@192.168.0.77 gzip -dc /media/yessey/Work-Data/name.dump.gz | restore -r -f -
 
 xfsdump -l 0 -f /usr/src/040718.dump /
 
