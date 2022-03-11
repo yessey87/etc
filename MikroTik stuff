@@ -1,0 +1,4 @@
+################ SIP Firewall
+/ip firewall filter add chain=forward in-interface=ether1-wan src-address-list="SIP Hacker" action=drop
+/ip firewall filter add chain=forward protocol=udp dst-port=5060 connection-state=new src-address-list="SIP Trial" in-interface=ether1-wan action=add-src-to-address-list address-list="SIP Hacker" address-list-timeout=1d
+/ip firewall filter add chain=forward src-address=0.0.0.0/0 protocol=udp dst-port=5060 in-interface=ether1-wan connection-state=new action=add-src-to-address-list address-list="SIP Trial" address-list-timeout=00:00:15
